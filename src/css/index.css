@@ -31,26 +31,39 @@ code {
   /* display: block; */
 }
 
-.form_wrap, .updateForm {
+.form_wrap,  {
   flex-wrap: wrap;
   width: 75%;
   text-align: center;
+  border: 1px solid red;
 }
-
 
 label {
   float: left;
   clear: left;
 }
 
-.form_wrap input {
-  margin-left: 30px;
+.form_wrap {
+  /* margin-left: 30px; */
+  width: 40%;
+  padding: 3%;
+  /* border: 1px solid red; */
+  margin: 0 auto;
 }
 
 input {
-  width: 50%;
+  width: 100%;
+  padding: 13px 8px;
+  margin: 15px 0 9px 0;
+  font-size: .8em;
+  border: .5px solid #3D3D3D;
+  box-sizing: border-box;
+  /* width: 50%;
   margin-top: .2em;
+  margin-right: 25em;
+  box-sizing: border-box; */
 }
+
 input[type=textarea] {
   padding-bottom: 12px;
   /* text-align: center; */
@@ -73,4 +86,8 @@ input[type="submit"] {
 textarea {
   resize: none;
   /* width: 500px; */
+}
+
+.hidden {
+  /* display: none; */
 }

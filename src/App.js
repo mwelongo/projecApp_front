@@ -130,15 +130,15 @@ const App = () => {
           <label >Description</label>
           <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
           <label>Image</label>
-          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} /><br/>
+          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
           <input type="submit" value="submit" className="button"/>
         </form>
       </div>
 
       {/* this will be the edit form */}
-      <div className="updateForm">
+      <div className="hidden">
         <h3>Edit</h3>
-        <form onSubmit={handleUpdate}>
+        <form className="form_wrap" onSubmit={handleUpdate}>
           <label >Title</label>
           <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
           <label >Country</label>
