@@ -14,7 +14,6 @@ const ShowIndex = (props) => {
                 <h3>{post.title}</h3>
                 <span>Country: {post.country}</span>
                 <span>City: {post.city}</span>
-
                 </div>
                 <img src={post.image}/>
                 <p>{post.description}</p>

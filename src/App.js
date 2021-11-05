@@ -6,7 +6,7 @@ import ShowIndex from "./components/ShowIndex"
 const url = 'https://enigmatic-anchorage-22310.herokuapp.com/posts'
 const App = () => {
   //state of variables on intial create form
-  const [creator, setCreator] = useState('');
+  const [creator, setCreator] = useState('')
   const [image, setImage] = useState('')
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
@@ -26,7 +26,7 @@ const App = () => {
 
   // handle create
   const handlePostSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     axios.post(url,
       {
         creator: creator,
@@ -36,7 +36,6 @@ const App = () => {
         country: country,
         city: city
       }
-
     ).then(() => {
       axios
       .get(url)
@@ -47,7 +46,6 @@ const App = () => {
         setImage('');
         setCountry('');
         setCity('')
-
       })
     })
   }
@@ -56,7 +54,7 @@ const App = () => {
   const handleUpdate = (e) => {
     e.preventDefault()
     axios
-      .put(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`,//argument for post that will be eddited
+      .put(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`,
         {
           title: editedTitle,
           description: editedDescription,
@@ -121,8 +119,8 @@ const App = () => {
         <button onClick="#">Create Post</button>
       </nav>
 
-      {/* create form */}
-      <div className="form_wrap hidden">
+
+      <div>
         <form onSubmit={handlePostSubmit}>
           <label >Title</label>
           <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
@@ -138,11 +136,10 @@ const App = () => {
         </form>
       </div>
 
-      {/* this will be the edit form */}
-      <div className="hidden">
+      <div>
         <h3>Edit</h3>
         <form className="form_wrap" onSubmit={handleUpdate}>
-          <label >Title</label>
+          <label>Title</label>
           <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
           <label >Country</label>
           <input type="text" onChange={(e) => setEditedCountry(e.target.value)} value={editedCountry} />
@@ -153,7 +150,6 @@ const App = () => {
           <label>Image</label>
           <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} /><br/>
           <input type="submit" value="edit"/>
-
         </form>
       </div>
 
@@ -163,7 +159,6 @@ const App = () => {
         handleDelete={handleDelete}
         editButton={editButton}
       />
-
 
     </div>
   );
