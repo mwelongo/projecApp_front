@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #adb5bd;
 }
 
 code {
@@ -12,15 +13,34 @@ code {
     monospace;
 }
 
-.post-card {
-  border: 1px solid blue;
-  border-radius: 15px;
-  margin: 10px;
-  width: 25%;
-
-
+.main-container {
+  display: flex;
 }
 
-.post-card img {
-  width: 98%;
+.form_wrap {
+  display: block;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.form_wrap label {
+  margin: 10px;
+}
+
+input, button {
+  border-radius: 10px;
+}
+
+input, label, button {
+  padding: .5em;
+  margin: .2em;
+}
+
+button,
+input[type="submit"] {
+  width: 75px;
+  text-align: center;
+  text-transform: uppercase;
+  background: #ced4da;
 }

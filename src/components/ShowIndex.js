@@ -5,6 +5,7 @@ const ShowIndex = (props) => {
   return (
     <div>
       <h2>Show Posts</h2>
+      <div className="main-container">
         {
           props.posts.map((post) => {
             return (
@@ -20,6 +21,7 @@ const ShowIndex = (props) => {
             )
           })
         }
+      </div>
     </div>
   )
 }
