@@ -16,6 +16,11 @@ code {
   border: 1px solid blue;
   border-radius: 15px;
   margin: 10px;
-  width: 200px;
+  width: 25%;
 
+
+}
+
+.post-card img {
+  width: 98%;
 }
