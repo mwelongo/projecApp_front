@@ -130,7 +130,7 @@ const App = () => {
           <label >Description</label>
           <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
           <label>Image</label>
-          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
+          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} /><br/>
           <input type="submit" value="submit" className="button"/>
         </form>
       </div>
@@ -146,10 +146,11 @@ const App = () => {
           <label >City</label>
           <input type="text" onChange={(e) => setEditedCity(e.target.value)} value={editedCity} />
           <label >Description</label>
-          <input type="text" onChange={(e) => setEditedDescription(e.target.value)} value={editedDescription} />
-          <input type="submit" value="edit"/>
+          <input type="textarea" onChange={(e) => setEditedDescription(e.target.value)} value={editedDescription} />
           <label>Image</label>
-          <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} />
+          <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} /><br/>
+          <input type="submit" value="edit"/>
+
         </form>
       </div>
 
