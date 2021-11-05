@@ -116,10 +116,13 @@ const App = () => {
   //for handlers, they can be passed through anonymous functions
   return (
     <div className="App">
-      <h1>Travel App</h1>
+      <nav>
+        <h1>Travel App</h1>
+        <button onClick="#">Create Post</button>
+      </nav>
 
       {/* create form */}
-      <div className="form_wrap">
+      <div className="form_wrap hidden">
         <form onSubmit={handlePostSubmit}>
           <label >Title</label>
           <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />

@@ -89,5 +89,24 @@ textarea {
 }
 
 .hidden {
-  /* display: none; */
+  display: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  background-color: #6c757d;
+  padding: .2em;
+  border-radius: 15px;
+}
+
+nav button {
+  width: 10%;
+  margin-left: 50px;
+  padding: 10px;
+  /* float: left; */
+}
+
+h1 {
+  padding: 5px;
 }
