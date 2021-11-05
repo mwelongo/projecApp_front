@@ -3,8 +3,12 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import ShowIndex from "./components/ShowIndex"
 
-const url = 'https://enigmatic-anchorage-22310.herokuapp.com/posts'
+const url = 'https://enigmatic-anchorage-22310.herokuapp.com/posts';
 const App = () => {
+
+  //handle state of showing form
+  const [showForm, setShowForm] = useState(false)
+  const [showEditForm, setShowEditForm] = useState(false)
   //state of variables on intial create form
   const [creator, setCreator] = useState('');
   const [image, setImage] = useState('')
@@ -27,19 +31,17 @@ const App = () => {
   // handle create
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    axios.post(url,
+    axios.post('https://enigmatic-anchorage-22310.herokuapp.com/posts',
       {
-        creator: creator,
         title: title,
         description: description,
         image: image,
         country: country,
         city: city
       }
-
     ).then(() => {
       axios
-      .get(url)
+      .get('https://enigmatic-anchorage-22310.herokuapp.com/posts')
       .then((response) => {
         setPosts(response.data)
         setTitle('');
@@ -47,7 +49,7 @@ const App = () => {
         setImage('');
         setCountry('');
         setCity('')
-
+        console.log(response.data)
       })
     })
   }
@@ -78,10 +80,28 @@ const App = () => {
         })
 
       })
-
   }
+
+  //edit button state 
+  // const tuggleEditForm = () => {
+  //   if (showEditForm === false) {
+  //     setShowEditForm(true)
+  //   } if (showEditForm === true) {
+  //     setShowEditForm(false)
+  //   }
+  // }
+
   //function to pass handle update
   const editButton = (postData) => {
+    const tuggleEditForm = () => {
+      if (showEditForm === false) {
+        setShowEditForm(true)
+      } if (showEditForm === true) {
+        setShowEditForm(false)
+      }
+    }
+    tuggleEditForm()
+
     setPostToEdit(postData._id)
     setEditedTitle(postData.title)
     setEditedDescription(postData.description)
@@ -89,6 +109,15 @@ const App = () => {
     setEditedCity(postData.city)
     setEditedImage(postData.image)
     console.log(postData)
+  }
+
+  const tuggleClose = () => {
+    if (showEditForm === false) {
+      setShowEditForm(true)
+    } if (showEditForm === true) {
+      setShowEditForm(false)
+    }
+
   }
 
   //handle delete
@@ -113,49 +142,77 @@ const App = () => {
         console.log(posts)
       })
   },[])
+
+  //hendle nav
+  const tuggleForm = () => {
+    if (showForm === false) {
+      setShowForm(true)
+    } if (showForm === true) {
+      setShowForm(false)
+    }
+  }
+
   //for handlers, they can be passed through anonymous functions
   return (
     <div className="App">
       <nav>
         <h1>Travel App</h1>
-        <button onClick="#">Create Post</button>
+        <button onClick={tuggleForm}>Create Post</button>
       </nav>
+      
 
-      {/* create form */}
-      <div className="form_wrap hidden">
-        <form onSubmit={handlePostSubmit}>
-          <label >Title</label>
-          <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
-          <label >Country</label>
-          <input type="text" onChange={(e) => setCountry(e.target.value)} value={country} />
-          <label >City</label>
-          <input type="text" onChange={(e) => setCity(e.target.value)} value={city} />
-          <label >Description</label>
-          <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
-          <label>Image</label>
-          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
-          <input type="submit" value="submit" className="button"/>
-        </form>
-      </div>
-
+      {
+        showForm ? (
+          <div className="modal">
+             <button onClick={tuggleForm}>Close</button>
+            <div className="form_wrap">
+              <form onSubmit={handlePostSubmit}>
+                <label >Title</label>
+                <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
+                <label >Country</label>
+                <input type="text" onChange={(e) => setCountry(e.target.value)} value={country} />
+                <label >City</label>
+                <input type="text" onChange={(e) => setCity(e.target.value)} value={city} />
+                <label >Description</label>
+                <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
+                <label>Image</label>
+                <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
+                <input type="submit" value="submit" className="button"/>
+              </form>
+            </div>
+          </div>
+          
+        ) :
+          (
+            <></>
+          )
+      }
       {/* this will be the edit form */}
-      <div className="hidden">
-        <h3>Edit</h3>
-        <form className="form_wrap" onSubmit={handleUpdate}>
-          <label >Title</label>
-          <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
-          <label >Country</label>
-          <input type="text" onChange={(e) => setEditedCountry(e.target.value)} value={editedCountry} />
-          <label >City</label>
-          <input type="text" onChange={(e) => setEditedCity(e.target.value)} value={editedCity} />
-          <label >Description</label>
-          <input type="textarea" onChange={(e) => setEditedDescription(e.target.value)} value={editedDescription} />
-          <label>Image</label>
-          <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} /><br/>
-          <input type="submit" value="edit"/>
+      
+      {
+        showEditForm ? (         
+          <div className="modal">
+            <h3>Edit</h3>
+            <button onClick={tuggleClose}>Close</button>
+            <form className="form_wrap" onSubmit={handleUpdate}>
+              <label >Title</label>
+              <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
+              <label >Country</label>
+              <input type="text" onChange={(e) => setEditedCountry(e.target.value)} value={editedCountry} />
+              <label >City</label>
+              <input type="text" onChange={(e) => setEditedCity(e.target.value)} value={editedCity} />
+              <label >Description</label>
+              <input type="textarea" onChange={(e) => setEditedDescription(e.target.value)} value={editedDescription} />
+              <label>Image</label>
+              <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} /><br />
+              <input type="submit" value="edit" />
+            </form>
+          </div>
 
-        </form>
-      </div>
+        ) : (
+          <></>
+        )
+      }
 
       <ShowIndex
         posts={posts}
