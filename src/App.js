@@ -3,20 +3,25 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import ShowIndex from "./components/ShowIndex"
 
-
-
 const App = () => {
   //state of variables on intial create form
+  const [creator, setCreator] = useState('');
+  const [image, setImage] = useState('')
+  const [country, setCountry] = useState('')
+  const [city, setCity] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [posts, setPosts] = useState([])
 
   //state of variables on update form
+  const [editCreator, setEditCreator] = useState('');
+  const [editImage, setEditImage] = useState('')
+  const [editCountry, setEditCountry] = useState('')
+  const [editCity, setEditCity] = useState('')
   const [editedTitle, setEditTitle] = useState('')
   const [editedDescription, setEditedDescription] = useState('')
   //sets state of spcific post to edit
   const [postToEdit, setPostToEdit] = useState('')
-
 
   // handle create
   const handlePostSubmit = (e) => {
@@ -31,10 +36,11 @@ const App = () => {
       .get('http://localhost:3001/posts')
       .then((response) => {
         setPosts(response.data)
-        console.log(posts)
+        setTitle('');
+        setDescription('')
+
       })
     })
-    e.currentTarget.reset()
   }
 
   //handle update will handle update form
@@ -95,8 +101,16 @@ const App = () => {
       {/* create form */}
       <div className="form_wrap">
         <form onSubmit={handlePostSubmit}>
+          <label >Title</label>
           <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
-          <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
+          <label>Image</label>
+          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
+          <label >Country</label>
+          <input type="text" onChange={(e) => setCountry(e.target.value)} value={country} />
+          <label >City</label>
+          <input type="text" onChange={(e) => setCity(e.target.value)} value={city} />
+          <label >Description</label>
+          <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
           <input type="submit" value="submit" className="button"/>
         </form>
       </div>
