@@ -30,8 +30,12 @@ const App = () => {
     axios.post(url,
       {
         title: title,
-        description: description
+        description: description,
+        image: image,
+        country: country,
+        city: city
       }
+      
     ).then(() => {
       axios
       .get(url)
