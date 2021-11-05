@@ -1,4 +1,5 @@
 import react from "react"
+import '../css/post-card.css';
 
 const ShowIndex = (props) => {
   return (
@@ -8,11 +9,11 @@ const ShowIndex = (props) => {
           props.posts.map((post) => {
             return (
               <div className="post-card">
-                <h4>{post.title}</h4>
+                <h3>{post.title}</h3>
                 <h4>{post.country}</h4>
                 <h4>{post.city}</h4>
                 <img src={post.image}/>
-                <h6>{post.description}</h6>
+                <p>{post.description}</p>
                 <button onClick={(e) => { props.handleDelete(post) }}>Delete</button>
                 <button onClick={(e) => { props.editButton(post) }}>Edit</button>
               </div>
