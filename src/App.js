@@ -15,11 +15,11 @@ const App = () => {
   const [posts, setPosts] = useState([])
 
   //state of variables on update form
-  const [editCreator, setEditCreator] = useState('');
-  const [editImage, setEditImage] = useState('')
-  const [editCountry, setEditCountry] = useState('')
-  const [editCity, setEditCity] = useState('')
-  const [editedTitle, setEditTitle] = useState('')
+  const [editedCreator, setEditCreator] = useState('');
+  const [editedImage, setEditedImage] = useState('')
+  const [editedCountry, setEditedCountry] = useState('')
+  const [editedCity, setEditedCity] = useState('')
+  const [editedTitle, setEditedTitle] = useState('')
   const [editedDescription, setEditedDescription] = useState('')
   //sets state of spcific post to edit
   const [postToEdit, setPostToEdit] = useState('')
@@ -29,20 +29,24 @@ const App = () => {
     e.preventDefault();
     axios.post(url,
       {
+        creator: creator,
         title: title,
         description: description,
         image: image,
         country: country,
         city: city
       }
-      
+
     ).then(() => {
       axios
       .get(url)
       .then((response) => {
         setPosts(response.data)
         setTitle('');
-        setDescription('')
+        setDescription('');
+        setImage('');
+        setCountry('');
+        setCity('')
 
       })
     })
@@ -55,7 +59,10 @@ const App = () => {
       .put(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`,//argument for post that will be eddited
         {
           title: editedTitle,
-          description: editedDescription
+          description: editedDescription,
+          image: editedImage,
+          country: editedCountry,
+          city: editedCity
         }
       )
       .then(() => {
@@ -63,6 +70,11 @@ const App = () => {
         .get(url)
         .then((response) => {
           setPosts(response.data)
+          setTitle('');
+          setDescription('');
+          setImage('');
+          setCountry('');
+          setCity('')
         })
 
       })
@@ -71,8 +83,11 @@ const App = () => {
   //function to pass handle update
   const editButton = (postData) => {
     setPostToEdit(postData._id)
-    setEditTitle(postData.title)
+    setEditedTitle(postData.title)
     setEditedDescription(postData.description)
+    setEditedCountry(postData.country)
+    setEditedCity(postData.city)
+    setEditedImage(postData.image)
     console.log(postData)
   }
 
@@ -108,14 +123,14 @@ const App = () => {
         <form onSubmit={handlePostSubmit}>
           <label >Title</label>
           <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
-          <label>Image</label>
-          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
           <label >Country</label>
           <input type="text" onChange={(e) => setCountry(e.target.value)} value={country} />
           <label >City</label>
           <input type="text" onChange={(e) => setCity(e.target.value)} value={city} />
           <label >Description</label>
           <input type="textarea" onChange={(e) => setDescription(e.target.value)} value={description} />
+          <label>Image</label>
+          <input type="text" onChange={(e) => setImage(e.target.value)} value={image} />
           <input type="submit" value="submit" className="button"/>
         </form>
       </div>
@@ -124,9 +139,17 @@ const App = () => {
       <div className="updateForm">
         <h3>Edit</h3>
         <form onSubmit={handleUpdate}>
-          <input type="text" onChange={(e) => setEditTitle(e.target.value)} value={editedTitle}/>
+          <label >Title</label>
+          <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
+          <label >Country</label>
+          <input type="text" onChange={(e) => setEditedCountry(e.target.value)} value={editedCountry} />
+          <label >City</label>
+          <input type="text" onChange={(e) => setEditedCity(e.target.value)} value={editedCity} />
+          <label >Description</label>
           <input type="text" onChange={(e) => setEditedDescription(e.target.value)} value={editedDescription} />
           <input type="submit" value="edit"/>
+          <label>Image</label>
+          <input type="text" onChange={(e) => setEditedImage(e.target.value)} value={editedImage} />
         </form>
       </div>
 
