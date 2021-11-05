@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import ShowIndex from "./components/ShowIndex"
 
+const url = 'https://enigmatic-anchorage-22310.herokuapp.com/posts'
 const App = () => {
   //state of variables on intial create form
   const [creator, setCreator] = useState('');
@@ -26,14 +27,14 @@ const App = () => {
   // handle create
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/posts',
+    axios.post(url,
       {
         title: title,
         description: description
       }
     ).then(() => {
       axios
-      .get('http://localhost:3001/posts')
+      .get(url)
       .then((response) => {
         setPosts(response.data)
         setTitle('');
@@ -47,7 +48,7 @@ const App = () => {
   const handleUpdate = (e) => {
     e.preventDefault()
     axios
-      .put(`http://localhost:3001/posts/${postToEdit}`,//argument for post that will be eddited
+      .put(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`,//argument for post that will be eddited
         {
           title: editedTitle,
           description: editedDescription
@@ -55,7 +56,7 @@ const App = () => {
       )
       .then(() => {
         axios
-        .get('http://localhost:3001/posts')
+        .get(url)
         .then((response) => {
           setPosts(response.data)
         })
@@ -74,10 +75,10 @@ const App = () => {
   //handle delete
   const handleDelete = (postData) => {//takes an argument that will be selected post
     axios
-      .delete(`http://localhost:3001/posts/${postData._id}`)
+      .delete(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postData._id}`)
       .then(() => {
         axios
-        .get('http://localhost:3001/posts')
+        .get(url)
         .then((response) => {
           setPosts(response.data)
         })
@@ -87,7 +88,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/posts')
+      .get(url)
       .then((response) => {
         setPosts(response.data)
         console.log(posts)
