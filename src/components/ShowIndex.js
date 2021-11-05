@@ -1,4 +1,4 @@
-import react from "react"
+import React from "react"
 import '../css/post-card.css';
 
 const ShowIndex = (props) => {
