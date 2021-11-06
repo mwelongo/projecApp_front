@@ -26,4 +26,8 @@ img {
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: 11px;
+  color: #6c757d;
+}
+.post-info {
+  color: #343a40;
 }

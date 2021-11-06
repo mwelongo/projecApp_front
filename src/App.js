@@ -83,7 +83,7 @@ const App = () => {
   }
 
   //edit button state
-  // const tuggleEditForm = () => {
+  // const toggleEditForm = () => {
   //   if (showEditForm === false) {
   //     setShowEditForm(true)
   //   } if (showEditForm === true) {
@@ -93,14 +93,14 @@ const App = () => {
 
   //function to pass handle update
   const editButton = (postData) => {
-    const tuggleEditForm = () => {
+    const toggleEditForm = () => {
       if (showEditForm === false) {
         setShowEditForm(true)
       } if (showEditForm === true) {
         setShowEditForm(false)
       }
     }
-    tuggleEditForm()
+    toggleEditForm()
 
     setPostToEdit(postData._id)
     setEditedTitle(postData.title)
@@ -111,7 +111,7 @@ const App = () => {
     console.log(postData)
   }
 
-  const tuggleClose = () => {
+  const toggleClose = () => {
     if (showEditForm === false) {
       setShowEditForm(true)
     } if (showEditForm === true) {
@@ -144,7 +144,7 @@ const App = () => {
   },[])
 
   //hendle nav
-  const tuggleForm = () => {
+  const toggleForm = () => {
     if (showForm === false) {
       setShowForm(true)
     } if (showForm === true) {
@@ -157,14 +157,14 @@ const App = () => {
     <div className="App">
       <nav>
         <h1>Travel App</h1>
-        <button onClick={tuggleForm}>Create Post</button>
+        <button onClick={toggleForm}>Create Post</button>
       </nav>
 
 
       {
         showForm ? (
           <div className="modal">
-             <button onClick={tuggleForm}>Close</button>
+            <button onClick={toggleForm}>Close</button>
             <div className="form_wrap">
               <form onSubmit={handlePostSubmit}>
                 <label >Title</label>
@@ -193,7 +193,7 @@ const App = () => {
         showEditForm ? (
           <div className="modal">
             <h3>Edit</h3>
-            <button onClick={tuggleClose}>Close</button>
+            <button onClick={toggleClose}>Close</button>
             <form className="form_wrap" onSubmit={handleUpdate}>
               <label >Title</label>
               <input type="text" onChange={(e) => setEditedTitle(e.target.value)} value={editedTitle} />
