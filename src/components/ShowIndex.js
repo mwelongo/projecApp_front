@@ -3,7 +3,7 @@ import '../css/post-card.css';
 
 const ShowIndex = (props) => {
   return (
-    <div className="container">
+    <div>
       <h2>Show Posts</h2>
       <div className="main-container">
         {
