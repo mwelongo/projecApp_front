@@ -14,7 +14,16 @@ button {
 }
 
 img {
-  height: 55%;
+  height: 50%;
   width: 98%;
   border-radius: 10px;
+}
+
+.description {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11px;
 }

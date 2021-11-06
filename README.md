@@ -27,3 +27,6 @@
 
 ## Unsolved - WIP
 *
+
+## References
+* Multiple-line Ellipsis: [Stack Overflow](https://stackoverflow.com/questions/33058004/applying-an-ellipsis-to-multiline-text)

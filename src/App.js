@@ -221,6 +221,10 @@ const App = () => {
         editButton={editButton}
       />
 
+      <footer>
+        <p>A project by <a href="https://www.linkedin.com/in/domacor-mentee-7aa486126/">Dom</a> and <a href="https://www.linkedin.com/in/muzabelwelongo/">Muzabel</a></p>
+      </footer>
+
     </div>
   );
 }

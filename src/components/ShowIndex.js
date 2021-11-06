@@ -15,7 +15,7 @@ const ShowIndex = (props) => {
                 <h5>Location: {post.city}, {post.country}</h5>
                 </div>
                 <img src={post.image}/>
-                <p>{post.description}</p>
+                <p className="description">{post.description}</p>
                 <button onClick={(e) => { props.handleDelete(post) }}>Delete</button>
                 <button onClick={(e) => { props.editButton(post) }}>Edit</button>
               </div>
