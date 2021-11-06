@@ -1,5 +1,5 @@
 body {
-  margin: 2%;
+  margin: 3.3%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -35,7 +35,8 @@ code {
   flex-wrap: wrap;
   width: 75%;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid #dee2e6;
+  border-radius: 15px;
 }
 
 label {
@@ -56,31 +57,23 @@ label {
 }
 
 .form_wrap {
-  /* margin-left: 30px; */
   width: 40%;
-
   padding: 3%;
-  /* border: 1px solid red; */
   margin: 0 auto;
 }
-
 
 input {
   width: 100%;
   padding: 13px 8px;
   margin: 15px 0 9px 0;
   font-size: .8em;
-  border: .5px solid #3D3D3D;
+  border: .5px solid #ced4da;
   box-sizing: border-box;
-  /* width: 50%;
-  margin-top: .2em;
-  margin-right: 25em;
-  box-sizing: border-box; */
+  border-radius: 10px;
 }
 
 input[type=textarea] {
-  padding-bottom: 12px;
-  /* text-align: center; */
+  padding-bottom: 30px;
 }
 
 input, label, button {

@@ -5,18 +5,16 @@ button {
 
 }
 .post-card {
-  /* border: 1px solid #212529; */
   background-color: aliceblue;
   border-radius: 15px;
   width: 32.5%;
   float: left;
   padding: .2em;
-  margin: .1%;
-  /* align-items: baseline; */
+  margin: .12%;
 }
 
 img {
-  height: 40%;
+  height: 55%;
   width: 98%;
   border-radius: 10px;
 }

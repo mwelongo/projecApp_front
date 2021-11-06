@@ -12,8 +12,7 @@ const ShowIndex = (props) => {
               <div className="post-card">
                 <div className="post-info">
                 <h3>{post.title}</h3>
-                <span>Country: {post.country}</span>
-                <span>City: {post.city}</span>
+                <h5>Location: {post.city}, {post.country}</h5>
                 </div>
                 <img src={post.image}/>
                 <p>{post.description}</p>

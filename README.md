@@ -9,6 +9,7 @@
 * Git Hub:
   * [Backend](https://github.com/dommentee/Project_3_Backend)
   * [Frontend](https://github.com/mwelongo/Project_3_Frontend/tree/dev)
+* Trello Board: https://trello.com/b/KqqwlxWa/gaproject-02
 
 ## User Stories
 * Authentication: User will be able to create an account, enter basic profile info, and login
