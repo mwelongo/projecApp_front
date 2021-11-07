@@ -69,15 +69,17 @@ input[type=textarea] {
 button,
 input[type="submit"] {
   width: 75px;
+  height:30px;
   text-align: center;
   text-transform: uppercase;
   background: #ced4da;
   border-radius: 10px;
-}
 
-textarea {
-  resize: none;
-  /* width: 500px; */
+  box-shadow: 0 2px 3px #5e5d5b;
+}
+input[type="submit"], .delete-edit-btn {
+  line-height: .5em;
+  margin:5px 3px auto;
 }
 
 nav {
@@ -92,7 +94,6 @@ nav button {
   width: 10%;
   margin-left: 50px;
   padding: 10px;
-  /* float: left; */
 }
 
 h1 {

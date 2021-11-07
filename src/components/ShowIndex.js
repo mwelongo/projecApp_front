@@ -16,8 +16,8 @@ const ShowIndex = (props) => {
                 </div>
                 <img src={post.image}/>
                 <p className="description">{post.description}</p>
-                <button onClick={(e) => { props.handleDelete(post) }}>Delete</button>
-                <button onClick={(e) => { props.editButton(post) }}>Edit</button>
+                <button className="delete-edit-btn" onClick={(e) => { props.handleDelete(post) }}>Delete</button>
+                <button className="delete-edit-btn" onClick={(e) => { props.editButton(post) }}>Edit</button>
               </div>
             )
           })
