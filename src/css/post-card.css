@@ -41,9 +41,9 @@ img {
   display: flex;
 }
 .detailed-post-container img {
-  /* width: 45%;
-  height: 90%; */
+  width: 90%;
+  height: 90%;
 }
 .detailed-post-desc {
-  width: 45%;
+  width: 50%;
 }
