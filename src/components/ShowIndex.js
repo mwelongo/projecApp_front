@@ -18,6 +18,7 @@ const ShowIndex = (props) => {
                 <p className="description">{post.description}</p>
                 <button className="delete-edit-btn" onClick={(e) => { props.handleDelete(post) }}>Delete</button>
                 <button className="delete-edit-btn" onClick={(e) => { props.editButton(post) }}>Edit</button>
+                <button className="delete-edit-btn open-post-btn" onClick={(e) => { props.showPostButton(post) }}>Open Post</button>
               </div>
             )
           })

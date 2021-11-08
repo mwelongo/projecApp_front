@@ -9,6 +9,7 @@ const App = () => {
   //handle state of showing form
   const [showForm, setShowForm] = useState(false)
   const [showEditForm, setShowEditForm] = useState(false)
+  const [showPostModal, setShowPostModal] = useState(false)
   //state of variables on intial create form
   const [creator, setCreator] = useState('')
   const [image, setImage] = useState('')
@@ -102,6 +103,34 @@ const App = () => {
     console.log(postData)
   }
 
+  //function to open the show-page modal of each post
+  const showPostButton = (data) => {
+    const toggleShowPostModal = () => {
+      if (showPostModal === false) {
+        setShowPostModal(true)
+      } if (showPostModal === true) {
+        setShowPostModal(false)
+      }
+    }
+    toggleShowPostModal()
+
+    // setPosts(data._id)
+    setTitle(data.title)
+    setDescription(data.description)
+    setCountry(data.country)
+    setCity(data.city)
+    setImage(data.image)
+  }
+  // Close button for the Show Page
+  const toggleCloseShowPost = () => {
+    if (showPostModal === false) {
+      setShowPostModal(true)
+    } if (showPostModal === true) {
+      setShowPostModal(false)
+    }
+
+  }
+
   const toggleClose = () => {
     if (showEditForm === false) {
       setShowEditForm(true)
@@ -134,7 +163,7 @@ const App = () => {
       })
   },[])
 
-  //hendle nav
+  //handle nav
   const toggleForm = () => {
     if (showForm === false) {
       setShowForm(true)
@@ -157,8 +186,6 @@ const App = () => {
           )
         })
       }
-
-
 
       {
         showForm ? (
@@ -213,12 +240,35 @@ const App = () => {
         )
       }
 
+      {
+        showPostModal ? (
+          <div className="modal">
+            <button onClick={toggleCloseShowPost}>Close</button>
+            <h1>{title}</h1>
+            <div className="detailed-post-container">
+              <div className="detailed-post-desc">
+                <img src={image}/>
+                <h6>{description}</h6>
+              </div>
+              <div className="detailed-post-desc">
+                <h2>{city}, {country}</h2>
+                <h3>Sub-title here ... </h3>
+                <h5>Comment</h5>
+              </div>
+            </div>
+
+          </div>
+        ) : (<></>)
+      }
+
       <ShowIndex
         posts={posts}
         //possing down handelers
         handleDelete={handleDelete}
         editButton={editButton}
+        showPostButton={showPostButton}
       />
+
 
       <footer>
         <p>A project by <a href="https://www.linkedin.com/in/domacor-mentee-7aa486126/" target="_blank">Dom</a> and <a href="https://www.linkedin.com/in/muzabelwelongo/" target="_blank">Muzabel</a></p>

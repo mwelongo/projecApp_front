@@ -31,3 +31,19 @@ img {
 .post-info {
   color: #343a40;
 }
+
+.open-post-btn {
+  color: #f8f9fa;
+  font-weight: 600;
+  background-color: #495057;
+}
+.detailed-post-container {
+  display: flex;
+}
+.detailed-post-container img {
+  /* width: 45%;
+  height: 90%; */
+}
+.detailed-post-desc {
+  width: 45%;
+}

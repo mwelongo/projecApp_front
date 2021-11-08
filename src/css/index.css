@@ -99,3 +99,11 @@ nav button {
 h1 {
   padding: 5px;
 }
+
+footer {
+  color: #343a40;
+  font-size: 11px;
+}
+footer a {
+  text-decoration: none;
+}
