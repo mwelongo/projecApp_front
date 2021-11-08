@@ -57,6 +57,19 @@ const App = () => {
     })
   }
 
+  const handleCommentSubmit = (e) => {
+    e.preventDefault()
+    axios
+      .post(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`)
+      
+      .then(() => {
+        axios
+          .get('https://enigmatic-anchorage-22310.herokuapp.com/posts')
+          .then()
+      })
+
+  }
+
   //handle update will handle update form
   const handleUpdate = (e) => {
     e.preventDefault()
@@ -259,7 +272,14 @@ const App = () => {
               <div className="detailed-post-desc">
                 <h2>{city}, {country}</h2>
                 <h3>Sub-title here ... </h3>
-                <h5>Comment</h5>
+                <form action="/arts/<%=upload.id%>/comments" class="comment_form" method="POST">
+                  <textarea name="comments[][comment]" placeholder="comment" class="comment_textarea" rows="5" cols="40"></textarea> 
+          <input type="submit" value="submit" class="sub_comment"/>
+        </form>
+        <div class="comments_wrap">
+          <ul>
+          </ul>
+        </div>
               </div>
             </div>
 
