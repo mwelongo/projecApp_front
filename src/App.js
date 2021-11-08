@@ -82,15 +82,6 @@ const App = () => {
       })
   }
 
-  //edit button state
-  // const toggleEditForm = () => {
-  //   if (showEditForm === false) {
-  //     setShowEditForm(true)
-  //   } if (showEditForm === true) {
-  //     setShowEditForm(false)
-  //   }
-  // }
-
   //function to pass handle update
   const editButton = (postData) => {
     const toggleEditForm = () => {
@@ -159,6 +150,14 @@ const App = () => {
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
       </nav>
+      {
+        posts.map((post) => {
+          return (
+            <div>{ post.country}</div>
+          )
+        })
+      }
+
 
 
       {
@@ -222,7 +221,7 @@ const App = () => {
       />
 
       <footer>
-        <p>A project by <a href="https://www.linkedin.com/in/domacor-mentee-7aa486126/">Dom</a> and <a href="https://www.linkedin.com/in/muzabelwelongo/">Muzabel</a></p>
+        <p>A project by <a href="https://www.linkedin.com/in/domacor-mentee-7aa486126/" target="_blank">Dom</a> and <a href="https://www.linkedin.com/in/muzabelwelongo/" target="_blank">Muzabel</a></p>
       </footer>
 
     </div>
