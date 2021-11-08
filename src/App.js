@@ -155,7 +155,7 @@ const App = () => {
 
   }
 
-  
+
   const handleSearch = () => {
     posts.filter((post) => {
       return Object.values(post).join('').toLocaleLowerCase()
@@ -201,7 +201,7 @@ const App = () => {
       <nav>
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
-        <form icon="search"> 
+        <form icon="search">
           <input type="text" onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
           <input type="submit" value="search"/>
         </form>
@@ -265,11 +265,11 @@ const App = () => {
             <button onClick={toggleCloseShowPost}>Close</button>
             <h1>{title}</h1>
             <div className="detailed-post-container">
-              <div className="detailed-post-desc">
+              <div className="show-post-wrap">
                 <img src={image}/>
-                <h6>{description}</h6>
+                <h6 id="show-post-desc">{description}</h6>
               </div>
-              <div className="detailed-post-desc">
+              <div className="show-post-wrap">
                 <h2>{city}, {country}</h2>
                 <h3>Sub-title here ... </h3>
                 <form action="/arts/<%=upload.id%>/comments" class="comment_form" method="POST">
