@@ -179,13 +179,6 @@ const App = () => {
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
       </nav>
-      {
-        posts.map((post) => {
-          return (
-            <div>{ post.country}</div>
-          )
-        })
-      }
 
       {
         showForm ? (
@@ -246,14 +239,16 @@ const App = () => {
             <button onClick={toggleCloseShowPost}>Close</button>
             <h1>{title}</h1>
             <div className="detailed-post-container">
-              <div className="detailed-post-desc">
+              <div className="show-post-wrap">
                 <img src={image}/>
-                <h6>{description}</h6>
+                <h6 id="show-post-desc">{description}</h6>
               </div>
-              <div className="detailed-post-desc">
+              <div className="show-post-wrap">
                 <h2>{city}, {country}</h2>
-                <h3>Sub-title here ... </h3>
-                <h5>Comment</h5>
+                <h4>Add Comment Below</h4>
+                <div className="comment-wrap">
+                  <h5>Comment</h5>
+                </div>
               </div>
             </div>
 

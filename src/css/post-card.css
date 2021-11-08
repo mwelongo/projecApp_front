@@ -44,6 +44,19 @@ img {
   width: 90%;
   height: 90%;
 }
-.detailed-post-desc {
+#show-post-desc {
+  width: 90%;
+  margin: auto;
+  text-align: justify;
+  padding: 1em;
+}
+.show-post-wrap {
   width: 50%;
+  margin: 1em;;
+}
+
+.comment-wrap {
+  border: 3px solid #8e9aaf;
+  border-radius: 10px;
+  height: 70%;
 }

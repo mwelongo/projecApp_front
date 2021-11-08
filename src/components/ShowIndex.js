@@ -4,7 +4,7 @@ import '../css/post-card.css';
 const ShowIndex = (props) => {
   return (
     <div>
-      <h2>Show Posts</h2>
+      <h2>Recent Posts</h2>
       <div className="main-container">
         {
           props.posts.map((post) => {
