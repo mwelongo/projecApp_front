@@ -7,8 +7,8 @@
   * Backend https://enigmatic-anchorage-22310.herokuapp.com/posts
   * Frontend https://blooming-plains-76036.herokuapp.com/
 * Git Hub:
-  * [Backend](https://github.com/dommentee/Project_3_Backend)
-  * [Frontend](https://github.com/mwelongo/Project_3_Frontend/tree/dev)
+  * [Backend](https://github.com/dommentee/projectApp_back)
+  * [Frontend](https://github.com/mwelongo/project-app_front)
 * Trello Board: https://trello.com/b/KqqwlxWa/gaproject-02
 
 ## User Stories
