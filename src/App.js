@@ -18,6 +18,8 @@ const App = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [posts, setPosts] = useState([])
+  //set search
+  const [searchInput, setSearchInput] = useState('')
 
   //state of variables on update form
   const [editedCreator, setEditCreator] = useState('');
@@ -140,6 +142,14 @@ const App = () => {
 
   }
 
+
+  const handleSearch = () => {
+    posts.filter((post) => {
+      return Object.values(post).join('').toLocaleLowerCase()
+    })
+  }
+  handleSearch()
+
   //handle delete
   const handleDelete = (postData) => {//takes an argument that will be selected post
     axios
@@ -178,8 +188,11 @@ const App = () => {
       <nav>
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
+        <form icon="search">
+          <input type="text" onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
+          <input type="submit" value="search"/>
+        </form>
       </nav>
-
       {
         showForm ? (
           <div className="modal">
@@ -255,6 +268,14 @@ const App = () => {
           </div>
         ) : (<></>)
       }
+
+      {/* {
+        posts.country ? (
+          <button>{ posts.country}</button>
+        ) : (
+            <></>
+        )
+      } */}
 
       <ShowIndex
         posts={posts}
