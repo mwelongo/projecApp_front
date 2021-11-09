@@ -19,7 +19,10 @@ const App = () => {
   const [description, setDescription] = useState('')
   const [posts, setPosts] = useState([])
   //set search
-  const [searchInput, setSearchInput] = useState('')
+  const [searchInput, setSearchInput] = useState(null)
+
+  ///
+  // const [countryFilter, setCountryFilter] = useState(null)
 
   //set comment
   const [comments, setComments] = useState([])
@@ -165,13 +168,13 @@ const App = () => {
   }
 
 
-  const handleSearch = () => {
-    posts.filter((post) => {
-      return Object.values(post).join('').toLocaleLowerCase()
-    })
+  const handleSearch = (e) => {
+    e.preventDefault()
+    // posts.filter(() => {
+    //   return Object.values(post).join('').toLocaleLowerCase()
+    // })
+    makeRequest(`?country=${searchInput}`)
   }
-  handleSearch()
-
   //handle delete
   const handleDelete = (postData) => {//takes an argument that will be selected post
     axios
@@ -193,7 +196,16 @@ const App = () => {
         setPosts(response.data)
         console.log(posts)
       })
-  },[])
+  }, [])
+  //
+  const makeRequest = (filter) => {
+    axios
+      .get(url+filter)
+      .then((response) => {
+      setPosts(response.data)
+      console.log(posts)
+    })
+  }
 
   //handle nav
   const toggleForm = () => {
@@ -210,11 +222,12 @@ const App = () => {
       <nav>
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
-        {/* <form icon="search">
+        <form onSubmit={handleSearch}>
           <input type="text" onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
           <input type="submit" value="search"/>
-        </form> */}
+        </form>
       </nav>
+
       {
         showForm ? (
           <div className="modal">
