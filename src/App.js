@@ -21,6 +21,9 @@ const App = () => {
   //set search
   const [searchInput, setSearchInput] = useState('')
 
+  //set comment
+  const [comments, setComments] = useState([])
+ 
   //state of variables on update form
   const [editedCreator, setEditCreator] = useState('');
   const [editedImage, setEditedImage] = useState('')
@@ -59,13 +62,19 @@ const App = () => {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault()
+    console.log(comments)
     axios
-      .post(`https://enigmatic-anchorage-22310.herokuapp.com/posts/${postToEdit}`)
-      
-      .then(() => {
+      .post(`https://enigmatic-anchorage-22310.herokuapp.com/posts`,
+        {
+          comments: comments
+        }
+        
+    ).then(() => {
         axios
           .get('https://enigmatic-anchorage-22310.herokuapp.com/posts')
-          .then()
+          .then((response) => {
+            setPosts(response.data)
+          })
       })
 
   }
@@ -201,10 +210,10 @@ const App = () => {
       <nav>
         <h1>Travel App</h1>
         <button onClick={toggleForm}>Create Post</button>
-        <form icon="search">
+        {/* <form icon="search">
           <input type="text" onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
           <input type="submit" value="search"/>
-        </form>
+        </form> */}
       </nav>
       {
         showForm ? (
@@ -272,17 +281,17 @@ const App = () => {
               <div className="show-post-wrap">
                 <h2>{city}, {country}</h2>
                 <h3>Sub-title here ... </h3>
-                <form action="/arts/<%=upload.id%>/comments" class="comment_form" method="POST">
-                  <textarea name="comments[][comment]" placeholder="comment" class="comment_textarea" rows="5" cols="40"></textarea> 
-          <input type="submit" value="submit" class="sub_comment"/>
-        </form>
-        <div class="comments_wrap">
-          <ul>
-          </ul>
-        </div>
+                {/* <form onSubmit={handleCommentSubmit}>
+                  <textarea placeholder="comment" onChange={(e) => setComments(e.target.value)} value={ comments} rows="5" cols="40"></textarea>
+                  <input type="submit" value="submit" class="sub_comment"/>
+                </form>
+                <div class="comments_wrap">
+                  <ul>
+                    
+                  </ul>
+                </div> */}
               </div>
             </div>
-
           </div>
         ) : (<></>)
       }
