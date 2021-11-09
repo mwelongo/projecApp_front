@@ -21,9 +21,6 @@ const App = () => {
   //set search
   const [searchInput, setSearchInput] = useState(null)
 
-  ///
-  // const [countryFilter, setCountryFilter] = useState(null)
-
   //set comment
   const [comments, setComments] = useState([])
  
@@ -167,14 +164,6 @@ const App = () => {
 
   }
 
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    // posts.filter(() => {
-    //   return Object.values(post).join('').toLocaleLowerCase()
-    // })
-    makeRequest(`?country=${searchInput}`)
-  }
   //handle delete
   const handleDelete = (postData) => {//takes an argument that will be selected post
     axios
@@ -188,16 +177,6 @@ const App = () => {
       })
   }
 
-
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        setPosts(response.data)
-        console.log(posts)
-      })
-  }, [])
-  //
   const makeRequest = (filter) => {
     axios
       .get(url+filter)
@@ -205,6 +184,27 @@ const App = () => {
       setPosts(response.data)
       console.log(posts)
     })
+  }
+
+
+  useEffect(() => {
+    // axios
+    //   .get(url)
+    //   .then((response) => {
+    //     setPosts(response.data)
+    //     console.log(posts)
+    //   })
+    makeRequest('')
+  }, [])
+  //
+
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    // posts.filter(() => {
+    //   return Object.values(post).join('').toLocaleLowerCase()
+    // })
+    makeRequest(`?country=${searchInput}`)
   }
 
   //handle nav
@@ -220,9 +220,11 @@ const App = () => {
   return (
     <div className="App">
       <nav>
-        <h1>Travel App</h1>
-        <button onClick={toggleForm}>Create Post</button>
-        <form onSubmit={handleSearch}>
+        <div className="inner_nav">
+          <h1>Travel App</h1>
+          <button onClick={toggleForm}>Create Post</button>
+        </div>
+        <form onSubmit={handleSearch} className="searchForm">
           <input type="text" onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
           <input type="submit" value="search"/>
         </form>
