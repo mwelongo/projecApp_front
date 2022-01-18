@@ -85,17 +85,29 @@ input[type="submit"], .delete-edit-btn {
 nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #6c757d;
   padding: .2em;
   border-radius: 15px;
 }
 
+.inner_nav {
+  display: flex;
+  align-items: center;
+}
+input[type="submit"] {
+  margin: 0 2px 0 2px;
+}
+
 nav button {
-  width: 10%;
+  width: fit-content;
   margin-left: 50px;
   padding: 10px;
 }
-
+.searchForm {
+  display: flex;
+  align-items: center;
+}
 h1 {
   padding: 5px;
 }
